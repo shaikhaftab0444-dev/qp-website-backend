@@ -28,7 +28,6 @@ export default function Login() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50">
       <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-sm">
-
         <div className="text-center mb-6">
           <div style={{ fontSize: '2.5rem' }}>🔐</div>
           <h2 className="text-2xl font-bold text-gray-800 mt-2">Admin Login</h2>
@@ -53,7 +52,6 @@ export default function Login() {
               onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
             />
           </div>
-
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
             <input
@@ -65,7 +63,6 @@ export default function Login() {
               onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
             />
           </div>
-
           <button
             type="submit"
             disabled={loading}

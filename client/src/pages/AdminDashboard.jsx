@@ -7,80 +7,49 @@ const UNIVERSITY_DATA = {
   DBATU: {
     courses: ['B.Tech', 'M.Tech', 'MBA', 'MCA', 'Diploma'],
     branches: {
-      'B.Tech': [
-        'Computer Engineering',
-        'Information Technology',
-        'Mechanical Engineering',
-        'Civil Engineering',
-        'Electronics & Telecommunication Engineering',
-        'Electrical Engineering',
-        'Chemical Engineering',
-        'Automobile Engineering',
-        'Agricultural Engineering',
-        'Food Technology',
-        'Textile Technology',
-      ],
-      'M.Tech': ['Computer Engineering', 'Mechanical Engineering', 'Civil Engineering', 'Electronics Engineering', 'Electrical Engineering'],
+      'B.Tech': ['Computer Engineering','Information Technology','Mechanical Engineering','Civil Engineering','Electronics & Telecommunication Engineering','Electrical Engineering','Chemical Engineering','Automobile Engineering','Agricultural Engineering','Food Technology','Textile Technology'],
+      'M.Tech': ['Computer Engineering','Mechanical Engineering','Civil Engineering','Electronics Engineering','Electrical Engineering'],
       'MBA': ['MBA'],
       'MCA': ['MCA'],
-      'Diploma': ['Computer Engineering', 'Mechanical Engineering', 'Civil Engineering', 'Electronics Engineering', 'Electrical Engineering'],
+      'Diploma': ['Computer Engineering','Mechanical Engineering','Civil Engineering','Electronics Engineering','Electrical Engineering'],
     },
     semesters: {
-      'B.Tech': ['1', '2', '3', '4', '5', '6', '7', '8'],
-      'M.Tech': ['1', '2', '3', '4'],
-      'MBA': ['1', '2', '3', '4'],
-      'MCA': ['1', '2', '3', '4', '5', '6'],
-      'Diploma': ['1', '2', '3', '4', '5', '6'],
+      'B.Tech': ['1','2','3','4','5','6','7','8'],
+      'M.Tech': ['1','2','3','4'],
+      'MBA': ['1','2','3','4'],
+      'MCA': ['1','2','3','4','5','6'],
+      'Diploma': ['1','2','3','4','5','6'],
     },
   },
   BAMBU: {
-    courses: ['B.Tech', 'M.Tech', 'B.Pharm', 'M.Pharm', 'MBA', 'MCA', 'B.Sc', 'M.Sc'],
+    courses: ['B.Tech','M.Tech','B.Pharm','M.Pharm','MBA','MCA','B.Sc','M.Sc'],
     branches: {
-      'B.Tech': [
-        'Computer Science & Engineering',
-        'Information Technology',
-        'Mechanical Engineering',
-        'Civil Engineering',
-        'Electronics & Communication Engineering',
-        'Electrical Engineering',
-        'Chemical Engineering',
-      ],
-      'M.Tech': ['Computer Science & Engineering', 'Mechanical Engineering', 'Civil Engineering', 'Electrical Engineering'],
+      'B.Tech': ['Computer Science & Engineering','Information Technology','Mechanical Engineering','Civil Engineering','Electronics & Communication Engineering','Electrical Engineering','Chemical Engineering'],
+      'M.Tech': ['Computer Science & Engineering','Mechanical Engineering','Civil Engineering','Electrical Engineering'],
       'B.Pharm': ['Pharmacy'],
       'M.Pharm': ['Pharmacy'],
       'MBA': ['MBA'],
       'MCA': ['MCA'],
-      'B.Sc': ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'Computer Science'],
-      'M.Sc': ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'Computer Science'],
+      'B.Sc': ['Physics','Chemistry','Mathematics','Biology','Computer Science'],
+      'M.Sc': ['Physics','Chemistry','Mathematics','Biology','Computer Science'],
     },
     semesters: {
-      'B.Tech': ['1', '2', '3', '4', '5', '6', '7', '8'],
-      'M.Tech': ['1', '2', '3', '4'],
-      'B.Pharm': ['1', '2', '3', '4', '5', '6', '7', '8'],
-      'M.Pharm': ['1', '2', '3', '4'],
-      'MBA': ['1', '2', '3', '4'],
-      'MCA': ['1', '2', '3', '4', '5', '6'],
-      'B.Sc': ['1', '2', '3', '4', '5', '6'],
-      'M.Sc': ['1', '2', '3', '4'],
+      'B.Tech': ['1','2','3','4','5','6','7','8'],
+      'M.Tech': ['1','2','3','4'],
+      'B.Pharm': ['1','2','3','4','5','6','7','8'],
+      'M.Pharm': ['1','2','3','4'],
+      'MBA': ['1','2','3','4'],
+      'MCA': ['1','2','3','4','5','6'],
+      'B.Sc': ['1','2','3','4','5','6'],
+      'M.Sc': ['1','2','3','4'],
     },
   },
 };
 
 const YEARS = [];
 for (let y = 2026; y >= 2015; y--) YEARS.push(String(y));
-
-const EXAM_TYPES = ['Winter', 'Summer', 'Mid Sem', 'Backlog', 'Ex-Students'];
-
-const EMPTY_FORM = {
-  title: '',
-  university: 'DBATU',
-  course: 'B.Tech',
-  branch: '',
-  semester: '',
-  year: '',
-  examType: 'Winter',
-  subject: '',
-};
+const EXAM_TYPES = ['Winter','Summer','Mid Sem','Backlog','Ex-Students'];
+const EMPTY_FORM = { title:'', university:'DBATU', course:'B.Tech', branch:'', semester:'', year:'', examType:'Winter', subject:'' };
 
 export default function AdminDashboard() {
   const { token, logout } = useAuth();
@@ -213,11 +182,8 @@ export default function AdminDashboard() {
 
             <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">University *</label>
-              <select
-                className="border border-gray-300 w-full p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={form.university}
-                onChange={(e) => handleChange('university', e.target.value)}
-              >
+              <select className="border border-gray-300 w-full p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={form.university} onChange={(e) => handleChange('university', e.target.value)}>
                 <option value="DBATU">DBATU</option>
                 <option value="BAMBU">BAMBU</option>
               </select>
@@ -225,23 +191,16 @@ export default function AdminDashboard() {
 
             <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">Course *</label>
-              <select
-                className="border border-gray-300 w-full p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={form.course}
-                onChange={(e) => handleChange('course', e.target.value)}
-              >
+              <select className="border border-gray-300 w-full p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={form.course} onChange={(e) => handleChange('course', e.target.value)}>
                 {uniData.courses.map((c) => <option key={c} value={c}>{c}</option>)}
               </select>
             </div>
 
             <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">Branch *</label>
-              <select
-                className="border border-gray-300 w-full p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={form.branch}
-                onChange={(e) => handleChange('branch', e.target.value)}
-                required
-              >
+              <select className="border border-gray-300 w-full p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={form.branch} onChange={(e) => handleChange('branch', e.target.value)} required>
                 <option value="">-- Select Branch --</option>
                 {branches.map((b) => <option key={b} value={b}>{b}</option>)}
               </select>
@@ -249,12 +208,8 @@ export default function AdminDashboard() {
 
             <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">Semester *</label>
-              <select
-                className="border border-gray-300 w-full p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={form.semester}
-                onChange={(e) => handleChange('semester', e.target.value)}
-                required
-              >
+              <select className="border border-gray-300 w-full p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={form.semester} onChange={(e) => handleChange('semester', e.target.value)} required>
                 <option value="">-- Select Semester --</option>
                 {semesters.map((s) => <option key={s} value={s}>Semester {s}</option>)}
               </select>
@@ -262,12 +217,8 @@ export default function AdminDashboard() {
 
             <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">Exam Year *</label>
-              <select
-                className="border border-gray-300 w-full p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={form.year}
-                onChange={(e) => handleChange('year', e.target.value)}
-                required
-              >
+              <select className="border border-gray-300 w-full p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={form.year} onChange={(e) => handleChange('year', e.target.value)} required>
                 <option value="">-- Select Year --</option>
                 {YEARS.map((y) => <option key={y} value={y}>{y}</option>)}
               </select>
@@ -275,11 +226,8 @@ export default function AdminDashboard() {
 
             <div>
               <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">Exam Type *</label>
-              <select
-                className="border border-gray-300 w-full p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={form.examType}
-                onChange={(e) => handleChange('examType', e.target.value)}
-              >
+              <select className="border border-gray-300 w-full p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={form.examType} onChange={(e) => handleChange('examType', e.target.value)}>
                 {EXAM_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
               </select>
             </div>
@@ -318,7 +266,7 @@ export default function AdminDashboard() {
                 onChange={(e) => setFile(e.target.files[0])}
                 required
               />
-              <p className="text-xs text-gray-400 mt-1">Only PDF files accepted.</p>
+              <p className="text-xs text-gray-400 mt-1">Only PDF files accepted. Max 10MB.</p>
             </div>
 
             <div className="md:col-span-3">
@@ -330,7 +278,6 @@ export default function AdminDashboard() {
                 {uploading ? 'Uploading...' : 'Upload Question Paper'}
               </button>
             </div>
-
           </form>
         </div>
 
@@ -339,11 +286,8 @@ export default function AdminDashboard() {
           <div className="px-6 py-4 border-b border-gray-100 flex flex-col md:flex-row md:items-center justify-between gap-3">
             <h2 className="text-lg font-bold text-gray-800">All Papers ({filtered.length})</h2>
             <div className="flex gap-3">
-              <select
-                className="border border-gray-300 p-2 rounded-lg text-sm"
-                value={filterUni}
-                onChange={(e) => setFilterUni(e.target.value)}
-              >
+              <select className="border border-gray-300 p-2 rounded-lg text-sm"
+                value={filterUni} onChange={(e) => setFilterUni(e.target.value)}>
                 <option value="">All Universities</option>
                 <option value="DBATU">DBATU</option>
                 <option value="BAMBU">BAMBU</option>
@@ -402,7 +346,7 @@ export default function AdminDashboard() {
                       <td className="px-4 py-3">
                         <div className="flex gap-2">
                           <a
-                            href={'http://localhost:5000/uploads/' + p.filePath}
+                            href={p.filePath}
                             target="_blank"
                             rel="noreferrer"
                             className="bg-blue-100 text-blue-700 hover:bg-blue-200 px-3 py-1 rounded-lg text-xs font-medium transition"
@@ -424,7 +368,6 @@ export default function AdminDashboard() {
             </div>
           )}
         </div>
-
       </div>
     </div>
   );

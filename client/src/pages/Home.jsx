@@ -72,14 +72,11 @@ export default function Home() {
   return (
     <div style={{ background: '#f8fafc', minHeight: '100vh' }}>
       <div className="max-w-5xl mx-auto p-6">
-
-        {/* Header */}
         <div className="text-center mb-8 mt-4">
           <h1 className="text-3xl font-bold text-gray-800">Previous Year Question Papers</h1>
           <p className="text-gray-500 mt-2">Browse and download papers from DBATU and BAMBU universities</p>
         </div>
 
-        {/* Search */}
         <div className="mb-4">
           <input
             className="border border-gray-300 w-full p-3 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm"
@@ -89,7 +86,6 @@ export default function Home() {
           />
         </div>
 
-        {/* Filters */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
           <select
             className="border border-gray-300 p-2 rounded-lg text-sm bg-white"
@@ -116,14 +112,9 @@ export default function Home() {
             onChange={(e) => setFilters((f) => ({ ...f, semester: e.target.value }))}
           >
             <option value="">All Semesters</option>
-            <option value="1">Semester 1</option>
-            <option value="2">Semester 2</option>
-            <option value="3">Semester 3</option>
-            <option value="4">Semester 4</option>
-            <option value="5">Semester 5</option>
-            <option value="6">Semester 6</option>
-            <option value="7">Semester 7</option>
-            <option value="8">Semester 8</option>
+            {[1,2,3,4,5,6,7,8].map((s) => (
+              <option key={s} value={String(s)}>Semester {s}</option>
+            ))}
           </select>
 
           <select
@@ -136,7 +127,6 @@ export default function Home() {
           </select>
         </div>
 
-        {/* Clear + Count */}
         <div className="flex justify-between items-center mb-4">
           <p className="text-sm text-gray-500">
             Showing <strong>{displayed.length}</strong> paper{displayed.length !== 1 ? 's' : ''}
@@ -148,12 +138,10 @@ export default function Home() {
           )}
         </div>
 
-        {/* Loading */}
         {loading && (
           <div className="text-center py-12 text-gray-400 text-lg">Loading papers...</div>
         )}
 
-        {/* No Results */}
         {!loading && displayed.length === 0 && (
           <div className="text-center py-16 text-gray-400">
             <div style={{ fontSize: '4rem' }} className="mb-4">📄</div>
@@ -162,7 +150,6 @@ export default function Home() {
           </div>
         )}
 
-        {/* Papers Grid */}
         {!loading && displayed.length > 0 && (
           <div className="grid md:grid-cols-2 gap-4">
             {displayed.map((paper) => (
@@ -192,6 +179,11 @@ export default function Home() {
                   <p className="text-sm text-gray-500">
                     <span className="font-medium text-gray-600">Semester: </span>{paper.semester}
                   </p>
+                  {paper.examType && (
+                    <p className="text-sm text-gray-500">
+                      <span className="font-medium text-gray-600">Exam: </span>{paper.examType}
+                    </p>
+                  )}
                   {paper.course && (
                     <p className="text-sm text-gray-500">
                       <span className="font-medium text-gray-600">Course: </span>{paper.course}
@@ -200,13 +192,12 @@ export default function Home() {
                 </div>
 
                 <a
-                  href={'http://localhost:5000/uploads/' + paper.filePath}
+                  href={paper.filePath}
                   target="_blank"
                   rel="noreferrer"
-                  download
                   className="mt-4 inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
                 >
-                  Download PDF
+                  ⬇ Download PDF
                 </a>
               </div>
             ))}
