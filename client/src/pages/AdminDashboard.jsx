@@ -21,8 +21,8 @@ const UNIVERSITY_DATA = {
       'Diploma': ['1','2','3','4','5','6'],
     },
   },
-  BAMBU: {
-    courses: ['B.Tech','M.Tech','B.Pharm','M.Pharm','MBA','MCA','B.Sc','M.Sc'],
+  BAMU: {
+    courses: ['B.Tech', 'M.Tech', 'B.Pharm', 'M.Pharm', 'MBA', 'MCA', 'B.Sc', 'M.Sc'],
     branches: {
       'B.Tech': ['Computer Science & Engineering','Information Technology','Mechanical Engineering','Civil Engineering','Electronics & Communication Engineering','Electrical Engineering','Chemical Engineering'],
       'M.Tech': ['Computer Science & Engineering','Mechanical Engineering','Civil Engineering','Electrical Engineering'],
@@ -175,7 +175,6 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        {/* Upload Form */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-8">
           <h2 className="text-lg font-bold text-gray-800 mb-5">Upload New Question Paper</h2>
           <form onSubmit={handleUpload} className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -185,7 +184,7 @@ export default function AdminDashboard() {
               <select className="border border-gray-300 w-full p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={form.university} onChange={(e) => handleChange('university', e.target.value)}>
                 <option value="DBATU">DBATU</option>
-                <option value="BAMBU">BAMBU</option>
+                <option value="BAMU">BAMU</option>
               </select>
             </div>
 
@@ -245,11 +244,11 @@ export default function AdminDashboard() {
 
             <div className="md:col-span-2">
               <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-                Paper Title * <span className="text-blue-500 normal-case font-normal">(auto-filled, you can edit)</span>
+                Paper Title * <span className="text-blue-500 normal-case font-normal">(auto-filled)</span>
               </label>
               <input
                 className="border border-gray-300 w-full p-2.5 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Title auto-fills when you fill subject, semester, year"
+                placeholder="Auto-fills when you fill subject, semester, year"
                 value={form.title}
                 onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
                 required
@@ -281,7 +280,6 @@ export default function AdminDashboard() {
           </form>
         </div>
 
-        {/* Papers Table */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-100 flex flex-col md:flex-row md:items-center justify-between gap-3">
             <h2 className="text-lg font-bold text-gray-800">All Papers ({filtered.length})</h2>
@@ -290,7 +288,7 @@ export default function AdminDashboard() {
                 value={filterUni} onChange={(e) => setFilterUni(e.target.value)}>
                 <option value="">All Universities</option>
                 <option value="DBATU">DBATU</option>
-                <option value="BAMBU">BAMBU</option>
+                <option value="BAMU">BAMU</option>
               </select>
               <input
                 className="border border-gray-300 p-2 rounded-lg text-sm w-48"
@@ -345,18 +343,12 @@ export default function AdminDashboard() {
                       <td className="px-4 py-3 text-gray-600">{p.year}</td>
                       <td className="px-4 py-3">
                         <div className="flex gap-2">
-                          <a
-                            href={p.filePath}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="bg-blue-100 text-blue-700 hover:bg-blue-200 px-3 py-1 rounded-lg text-xs font-medium transition"
-                          >
+                          <a href={p.filePath} target="_blank" rel="noreferrer"
+                            className="bg-blue-100 text-blue-700 hover:bg-blue-200 px-3 py-1 rounded-lg text-xs font-medium transition">
                             View
                           </a>
-                          <button
-                            onClick={() => handleDelete(p._id)}
-                            className="bg-red-100 text-red-600 hover:bg-red-200 px-3 py-1 rounded-lg text-xs font-medium transition"
-                          >
+                          <button onClick={() => handleDelete(p._id)}
+                            className="bg-red-100 text-red-600 hover:bg-red-200 px-3 py-1 rounded-lg text-xs font-medium transition">
                             Delete
                           </button>
                         </div>

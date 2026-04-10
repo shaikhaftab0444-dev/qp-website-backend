@@ -74,7 +74,7 @@ export default function Home() {
       <div className="max-w-5xl mx-auto p-6">
         <div className="text-center mb-8 mt-4">
           <h1 className="text-3xl font-bold text-gray-800">Previous Year Question Papers</h1>
-          <p className="text-gray-500 mt-2">Browse and download papers from DBATU and BAMBU universities</p>
+          <p className="text-gray-500 mt-2">Browse and download papers from DBATU and BAMU universities</p>
         </div>
 
         <div className="mb-4">
@@ -94,7 +94,7 @@ export default function Home() {
           >
             <option value="">All Universities</option>
             <option value="DBATU">DBATU</option>
-            <option value="BAMBU">BAMBU</option>
+            <option value="BAMU">BAMU</option>
           </select>
 
           <select
